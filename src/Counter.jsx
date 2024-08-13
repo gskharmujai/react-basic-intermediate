@@ -6,8 +6,18 @@ export function Counter() {
   return (
     <div>
       <h2>Counter Value {counter}</h2>
-      <input type="button" value=" + " onClick={incrementCounter} />
-      <input type="button" value=" - " onClick={decrementCounter} />
+      <input
+        type="button"
+        className="btn btn-danger"
+        value=" - "
+        onClick={decrementCounter}
+      />
+      <input
+        type="button"
+        className="ms-2 btn btn-success"
+        value=" + "
+        onClick={incrementCounter}
+      />
     </div>
   );
 
