@@ -1,5 +1,6 @@
+import { Counter } from "./Counter";
 function App() {
-  return "Hello World React Basics";
+  return <Counter />;
 }
 
 export default App;
