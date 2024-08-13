@@ -1,9 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { NameCounter } from "./NameCounter";
+import { NameCounterClass } from "./NameCounterClass";
 
 function App() {
   return (
     <div className="container mt-5">
-      <h1>Hello World React Basics</h1>
+      <NameCounter />
+      <hr/>
+      <NameCounterClass />
     </div>
   );
 }
