@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Radisson Blu",
+    "address": "MG Road",
+    "shortDescription": "Radisson Blu offers a great range of services and facilities such as spas, on-site restaurants and much more.",
+    "roomCost": 7000,
+    "ratings": 4.0
+  },
+  {
+    "name": "Vivanta by Taj",
+    "address": "Police Bazar",
+    "shortDescription": "Experience a haven of luxury and comfort, ideally located in the middle of bustling cities and towns.",
+    "roomCost": 3800,
+    "ratings": 3.8
+  },
+  {
+    "name": "Courtyard by Marriot",
+    "address": "Jail Road",
+    "shortDescription": "Dive into a world of luxury, where you can start your mornings with a serene sunrise and savor gourmet dining.",
+    "roomCost": 12000,
+    "ratings": 4.5
+  }
+]
