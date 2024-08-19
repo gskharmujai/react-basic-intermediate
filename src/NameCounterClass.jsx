@@ -53,7 +53,7 @@ export class NameCounterClass extends React.Component {
             </button>
           </div>
         </div>
-        <h4 className="mt-4">
+        <h4 className={`mt-4 ${this.state.name == '' && 'd-none'}`}>
           My name is {this.state.name} and I am {this.state.age} years old.
         </h4>
       </div>

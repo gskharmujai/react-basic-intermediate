@@ -39,7 +39,7 @@ export function NameCounter() {
           </button>
         </div>
       </div>
-      <h4 className="mt-4">
+      <h4 className={`mt-4 ${name == '' && 'd-none'}`}>
         My name is {name} and I am {age} years old.
       </h4>
     </div>
