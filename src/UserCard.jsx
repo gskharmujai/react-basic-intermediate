@@ -1,4 +1,4 @@
-export function UserCard({ name, company, email, phone }) {
+export function UserCard({ name, email, phone, website }) {
   return (
     <div className="col-4 my-3">
       <div className="card p-3">
@@ -6,7 +6,7 @@ export function UserCard({ name, company, email, phone }) {
         <p>{email}</p>
         <p>{phone}</p>
         <hr />
-        <h5>{company}</h5>
+        <h5>{website}</h5>
       </div>
     </div>
   );

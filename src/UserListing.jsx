@@ -5,13 +5,7 @@ export function UserListing({ users }) {
   return (
     <Fragment>
       {users.map((u) => (
-        <UserCard
-          name={u.name}
-          company={u.company.name}
-          email={u.email}
-          phone={u.phone}
-          key={u.id}
-        />
+        <UserCard key={u.id} {...u} />
       ))}
     </Fragment>
   );
