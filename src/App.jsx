@@ -1,9 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { UserProfile } from "./components/UserProfile";
 
 function App() {
   return (
     <div className="container mt-5">
-      <h1>Hello World React Basics</h1>
+      <UserProfile />
     </div>
   );
 }
