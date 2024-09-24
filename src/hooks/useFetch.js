@@ -1,14 +1,33 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useReducer } from "react";
+
+const ACTIONS = {
+  FETCH_START: "FETCH_START",
+  FETCH_SUCCESS: "FETCH_SUCCESS",
+  FETCH_ERROR: "FETCH_ERROR",
+};
+
+function reducer(state, { type, payload }) {
+  switch (type) {
+    case ACTIONS.FETCH_START:
+      return { isError: false, isLoading: true };
+    case ACTIONS.FETCH_SUCCESS:
+      return { data: payload.data, isError: false, isLoading: false };
+    case ACTIONS.FETCH_ERROR:
+      return { isError: true, isLoading: false };
+
+    default:
+      return state;
+  }
+}
 
 export function useFetch(url) {
-  const [data, setData] = useState();
-  const [isLoading, setLoading] = useState(false);
-  const [isError, setError] = useState(false);
+  const [state, dispatch] = useReducer(reducer, {
+    isLoading: true,
+    isError: false,
+  });
 
   useEffect(() => {
-    setData(undefined);
-    setLoading(true);
-    setError(false);
+    dispatch({ type: ACTIONS.FETCH_START });
 
     const controller = new AbortController();
     fetch(url, {
@@ -20,15 +39,13 @@ export function useFetch(url) {
         }
         return Promise.reject(res);
       })
-      .then(setData)
+      .then((data) => {
+        dispatch({ type: ACTIONS.FETCH_SUCCESS, payload: { data } });
+      })
       .catch((e) => {
         if (e.name === "AbortError") return;
 
-        setError(true);
-      })
-      .finally(() => {
-        if (controller.signal.aborted) return;
-        setLoading(false);
+        dispatch({ type: ACTIONS.FETCH_ERROR });
       });
 
     return () => {
@@ -36,5 +53,5 @@ export function useFetch(url) {
     };
   }, [url]);
 
-  return { data, isLoading, isError };
+  return state;
 }
