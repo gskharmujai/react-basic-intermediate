@@ -1,9 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import { Counter } from "./components/Counter";
+
 function App() {
   return (
     <div className="container mt-5">
-      <h1>Hello World React Basics</h1>
+      <Counter />
     </div>
   );
 }
