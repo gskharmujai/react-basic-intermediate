@@ -13,6 +13,10 @@ export function TeamMember() {
     setTimeout(() => {
       navigate("/teams");
     }, 5000);
+
+    return () => {
+      clearTimeout();
+    };
   });
 
   const { memberName } = useParams();
@@ -24,10 +28,10 @@ export function TeamMember() {
         Team Member - {fullName.map((obj) => obj.toUpperCase()).join(" ")}
       </h1>
       <h5>{context}</h5>
-      You will be redirect back to Teams Page in 2 seconds or click
+      You will be redirect back to Teams Page in 5 seconds or click{" "}
       <NavLink className="" to="..">
-        Here
-      </NavLink>
+        here
+      </NavLink>{" "}
       to go back.
     </div>
   );
