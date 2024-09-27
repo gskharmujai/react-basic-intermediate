@@ -1,7 +1,8 @@
-import { NavLink, useOutletContext } from "react-router-dom";
+import { NavLink, useOutletContext, useParams } from "react-router-dom";
 
-export function TeamMember({ name }) {
-  const fullName = name.split("-");
+export function TeamMember() {
+  const { memberName } = useParams();
+  const fullName = memberName.split("-");
   const context = useOutletContext();
   return (
     <div className="container">
