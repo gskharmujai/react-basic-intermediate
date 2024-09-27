@@ -1,6 +1,20 @@
-import { NavLink, useOutletContext, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import {
+  NavLink,
+  useNavigate,
+  useOutletContext,
+  useParams,
+} from "react-router-dom";
 
 export function TeamMember() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/teams");
+    }, 5000);
+  });
+
   const { memberName } = useParams();
   const fullName = memberName.split("-");
   const context = useOutletContext();
@@ -10,9 +24,11 @@ export function TeamMember() {
         Team Member - {fullName.map((obj) => obj.toUpperCase()).join(" ")}
       </h1>
       <h5>{context}</h5>
-      <NavLink className="btn btn-success mt-2" to="..">
-        Back
+      You will be redirect back to Teams Page in 2 seconds or click
+      <NavLink className="" to="..">
+        Here
       </NavLink>
+      to go back.
     </div>
   );
 }
