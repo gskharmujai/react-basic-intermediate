@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import {
   NavLink,
+  useLoaderData,
   useNavigate,
   useOutletContext,
   useParams,
@@ -11,24 +12,28 @@ export function TeamMember() {
 
   useEffect(() => {
     setTimeout(() => {
-      navigate("/teams");
-    }, 5000);
+      navigate("/team");
+    }, 3000);
 
     return () => {
       clearTimeout();
     };
   });
 
-  const { memberName } = useParams();
-  const fullName = memberName.split("-");
+  // const { memberName } = useParams();
+  // const fullName = memberName.split("-");
+
+  const member = useLoaderData();
   const context = useOutletContext();
+
   return (
     <div className="container">
       <h1>
-        Team Member - {fullName.map((obj) => obj.toUpperCase()).join(" ")}
+        {/*Team Member - {fullName.map((obj) => obj.toUpperCase()).join(" ")}*/}
+        Team Member - {member.name}
       </h1>
       <h5>{context}</h5>
-      You will be redirect back to Teams Page in 5 seconds or click{" "}
+      You will be redirect back to Teams Page in 3 seconds or click{" "}
       <NavLink className="" to="..">
         here
       </NavLink>{" "}
