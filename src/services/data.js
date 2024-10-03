@@ -1,27 +1,7 @@
 import { baseUrl } from "./baseUrl";
 
-export function getPosts(options) {
-  return baseUrl.get("/posts?_limit=20", options).then((res) => res.data);
-}
-
-export function getPostDetail(id, options) {
-  return baseUrl.get(`/posts/${id}`, options).then((res) => res.data);
-}
-
-export function getUsers(options) {
-  return baseUrl.get("/users?_limit=20", options).then((res) => res.data);
-}
-
-export function getUserDetail(id, options) {
-  return baseUrl.get(`/users/${id}`, options).then((res) => res.data);
-}
-
-export function getTodos(options) {
-  return baseUrl.get("/todos?_limit=20", options).then((res) => res.data);
-}
-
-export function getComments(postId, options) {
+export function getTodos(options, query) {
   return baseUrl
-    .get(`/posts/${postId}/comments`, options)
+    .get(`/todos?_limit=20&q=${query}`, options)
     .then((res) => res.data);
 }

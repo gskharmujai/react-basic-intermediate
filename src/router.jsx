@@ -1,10 +1,7 @@
 import { createBrowserRouter, Navigate, useRouteError } from "react-router-dom";
 import { BaseLayout } from "./layouts/BaseLayout";
-import { PostListData } from "./pages/PostList";
-import { UserListData } from "./pages/UserList";
 import { TodoListData } from "./pages/TodoList";
-import { PostDetailData } from "./pages/PostDetail";
-import { UserDetailData } from "./pages/UserDetail";
+import { NewTodo } from "./pages/NewTodo";
 
 export const router = createBrowserRouter([
   {
@@ -14,24 +11,35 @@ export const router = createBrowserRouter([
       {
         errorElement: <ErrorPage />,
         children: [
-          { index: true, element: <Navigate to="/posts" /> },
-          {
-            path: "posts",
-            children: [
-              { index: true, ...PostListData },
-              { path: ":postId", ...PostDetailData },
-            ],
-          },
-          {
-            path: "users",
-            children: [
-              { index: true, ...UserListData },
-              { path: ":userId", ...UserDetailData },
-            ],
-          },
+          { index: true, element: <Navigate to="/todos" /> },
           {
             path: "todos",
-            children: [{ index: true, ...TodoListData }],
+            children: [
+              { index: true, ...TodoListData },
+              {
+                path: "new",
+                element: <NewTodo />,
+                action: async ({ request }) => {
+                  const formData = await request.formData();
+                  const title = formData.get("title");
+
+                  if (title === "") {
+                    return "Title is required";
+                  }
+
+                  const todo = await fetch("https://example.com", {
+                    method: "POST",
+                    signal: request.signal,
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ title }),
+                  });
+
+                  console.log(todo);
+                },
+              },
+            ],
           },
         ],
       },
