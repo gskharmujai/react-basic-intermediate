@@ -1,7 +1,7 @@
 import { baseUrl } from "./baseUrl";
 
 export function getPosts(options) {
-  return baseUrl.get("/posts?_limit=20", options).then((res) => res.data);
+  return baseUrl.get("/posts?", options).then((res) => res.data);
 }
 
 export function getPostDetail(id, options) {
@@ -9,7 +9,7 @@ export function getPostDetail(id, options) {
 }
 
 export function getUsers(options) {
-  return baseUrl.get("/users?_limit=20", options).then((res) => res.data);
+  return baseUrl.get("/users", options).then((res) => res.data);
 }
 
 export function getUserDetail(id, options) {
@@ -17,7 +17,7 @@ export function getUserDetail(id, options) {
 }
 
 export function getTodos(options) {
-  return baseUrl.get("/todos?_limit=20", options).then((res) => res.data);
+  return baseUrl.get("/todos", options).then((res) => res.data);
 }
 
 export function getComments(postId, options) {
