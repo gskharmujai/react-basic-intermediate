@@ -27,16 +27,16 @@ export const router = createBrowserRouter([
                     return "Title is required";
                   }
 
-                  const todo = await fetch("https://example.com", {
+                  const todo = await fetch("http://127.0.0.1:3000/todos", {
                     method: "POST",
                     signal: request.signal,
                     headers: {
                       "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({ title }),
-                  });
+                    body: JSON.stringify({ title, completed: false }),
+                  }).then((res) => res.json());
 
-                  console.log(todo);
+                  return redirect("/");
                 },
               },
             ],
