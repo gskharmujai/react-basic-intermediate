@@ -5,6 +5,8 @@ import { UserListData } from "./pages/UserList";
 import { TodoListData } from "./pages/TodoList";
 import { PostDetailData } from "./pages/PostDetail";
 import { UserDetailData } from "./pages/UserDetail";
+import { NewPostData } from "./pages/NewPost";
+import { EditPostData } from "./pages/EditPost";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +21,17 @@ export const router = createBrowserRouter([
             path: "posts",
             children: [
               { index: true, ...PostListData },
-              { path: ":postId", ...PostDetailData },
+              {
+                path: ":postId",
+                children: [
+                  { index: true, ...PostDetailData },
+                  { path: "edit", ...EditPostData },
+                ],
+              },
+              {
+                path: "new",
+                ...NewPostData,
+              },
             ],
           },
           {

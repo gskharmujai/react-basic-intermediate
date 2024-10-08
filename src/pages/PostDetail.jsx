@@ -10,7 +10,9 @@ function PostDetail() {
         <div className="">
           <div className="card">
             <div className="card-body">
-              <h3 className="card-title text-capitalize">{post.title}</h3>
+              <h3 className="card-title text-capitalize">
+                {post.title} | <Link to="edit">Edit</Link>
+              </h3>
               <p>
                 By: <Link to={`/users/${post.userId}`}>{user.name}</Link>
               </p>
